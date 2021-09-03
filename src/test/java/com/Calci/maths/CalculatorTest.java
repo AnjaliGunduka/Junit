@@ -1,6 +1,7 @@
 package com.Calci.maths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
@@ -8,8 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 
-
-public class CalculatorTest  {
+public class CalculatorTest {
 
 	@Test
 	@DisplayName("Testing add method")
@@ -21,6 +21,19 @@ public class CalculatorTest  {
 		assertEquals(expected, actual);
 		System.out.println("It Passes the Test");
 		System.out.println("actual value is:-" + actual);
+	}
+
+	@Test
+	public void testDivide() {
+//		boolean isServerUp=false;
+//		assumeTrue(isServerUp);
+		assertThrows(ArithmeticException.class, () -> System.out.print(Calculator.div(1, 0) + "divided by zero"));
+		System.out.println("passed");
+	}
+
+	@Test
+	public void testcomputeCircleRadius() {
+		assertEquals(314.1592653589793, Calculator.computeCircleRadius(10), "should return area  of a circle");
 	}
 
 }
